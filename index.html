@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physical AIのための統一材料シミュレーション | Wei CUI</title>
+  <meta name="description" content="粒子法に基づく統一材料シミュレーションの研究デモ。剛体・弾性体・弾塑性体・塑性体を同一のシミュレータで扱う。Wei CUI, University of Tsukuba.">
+  <link rel="canonical" href="https://weiwillweiwillworkyo.github.io/material-simulation/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Unified Material Simulation Framework for Physical AI">
+  <meta property="og:description" content="A particle-based research demo of rigid, elastic, elastoplastic and plastic materials. Wei CUI, University of Tsukuba.">
+  <meta property="og:url" content="https://weiwillweiwillworkyo.github.io/material-simulation/">
+  <meta property="og:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/poster.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unified Material Simulation Framework for Physical AI">
+  <meta name="twitter:description" content="A particle-based material simulation research demo by Wei CUI, University of Tsukuba.">
+  <meta name="twitter:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/poster.png">
+  <style>
+    :root { color-scheme:light; --ink:#1b2330; --sub:#5d6675; --line:#e3e7ee; --bg:#f7f8fa; --accent:#2456c4; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Hiragino Sans","Noto Sans JP",sans-serif; line-height:1.65; }
+    main { max-width:1080px; margin:0 auto; padding:48px 28px 28px; }
+    header { border-left:4px solid var(--accent); padding-left:20px; margin-bottom:26px; }
+    h1 { margin:0; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; font-weight:700; overflow-wrap:anywhere; }
+    .en-title { margin:8px 0 0; font-size:clamp(1rem,2vw,1.2rem); color:var(--sub); }
+    .author { margin:14px 0 0; font-size:.95rem; }
+    .intro { margin:0 0 24px; }
+    .intro p { margin:5px 0; }
+    .en { color:var(--sub); font-size:.94rem; }
+    figure { margin:0; }
+    video { display:block; width:100%; height:auto; aspect-ratio:128/81; background:#101b2d; border-radius:10px; }
+    figcaption { padding:15px 0 12px; font-size:.95rem; }
+    figcaption span { display:block; }
+    a { color:var(--accent); text-underline-offset:3px; }
+    a:focus-visible,video:focus-visible { outline:3px solid var(--accent); outline-offset:5px; }
+    .links { display:flex; flex-wrap:wrap; gap:12px 28px; padding-top:8px; font-size:.94rem; }
+    footer { margin-top:32px; padding-top:18px; border-top:1px solid var(--line); color:var(--sub); font-size:.85rem; }
+    @media(max-width:600px) { main { padding:28px 16px 24px; } header { padding-left:14px; } video { border-radius:6px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Physical AIのための<br>統一材料シミュレーションフレームワーク</h1>
+      <p class="en-title" lang="en">Unified Material Simulation Framework for Physical AI</p>
+      <p class="author">Wei CUI · 筑波大学 <span lang="en">/ University of Tsukuba</span></p>
+    </header>
+    <section aria-label="研究デモ / Research demo">
+      <div class="intro">
+        <p>粒子法に基づく統一的な材料シミュレーションの研究デモです。異なる材料の振る舞いを、同一のシミュレータで表現します。</p>
+        <p class="en" lang="en">A particle-based research demo representing different material behaviors within a single simulator.</p>
+      </div>
+      <figure>
+        <video controls playsinline preload="metadata" poster="assets/poster.png" aria-label="四種の材料のシミュレーション / Four-material simulation" aria-describedby="video-caption">
+          <source src="assets/four-materials.mp4" type="video/mp4">
+          動画を再生できない場合は、<a href="assets/four-materials.mp4">MP4を開いてください</a>。
+        </video>
+        <figcaption id="video-caption">
+          <span>剛体（破断あり）・弾性体・弾塑性体・塑性体</span>
+          <span class="en" lang="en">Rigid material with fracture, elastic, elastoplastic and plastic materials.</span>
+        </figcaption>
+      </figure>
+      <div class="links">
+        <a href="assets/four-materials.mp4" download>動画をダウンロード / Download MP4</a>
+        <a href="https://github.com/WeiWillWeiWillWorkYo/material-simulation">GitHub</a>
+      </div>
+    </section>
+    <footer>Wei CUI · <span lang="ja">筑波大学</span> / <span lang="en">University of Tsukuba</span></footer>
+  </main>
+</body>
+</html>
