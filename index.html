@@ -36,6 +36,10 @@
     .links { display:flex; flex-wrap:wrap; gap:12px 28px; padding-top:8px; font-size:.94rem; }
     footer { margin-top:32px; padding-top:18px; border-top:1px solid var(--line); color:var(--sub); font-size:.85rem; }
     @media(max-width:600px) { main { padding:28px 16px 24px; } header { padding-left:14px; } video { border-radius:6px; } }
+    .comparisons { margin:0 0 40px; padding-bottom:24px; border-bottom:1px solid var(--line); }
+    .comparisons h2 { margin:0 0 14px; font-size:1.4rem; }
+    .comparisons figure { margin-top:24px; }
+    .comparisons video { aspect-ratio:16/9; }
   </style>
 </head>
 <body>
@@ -45,6 +49,35 @@
       <p class="en-title" lang="en">Unified Material Simulation Framework for Physical AI</p>
       <p class="author">Wei CUI · 筑波大学 <span lang="en">/ University of Tsukuba</span></p>
     </header>
+    <section class="comparisons" id="bunny-drop-8s" aria-labelledby="comparisons-title">
+      <h2 id="comparisons-title">8秒間の落下比較 / 8-second bunny drop</h2>
+      <p>破断を許可する場合と禁止する場合を、別々の動画にまとめました。弾性体・flow-Plastic・剛体は完成済みの8秒映像です。弾塑性体の8秒版は未完成のため、該当パネルは空欄として明示しています。</p>
+      <p class="en" lang="en">Separate comparisons with bond breaking enabled and disabled. Elastic, flow-Plastic and Rigid use completed 8-second deliveries. The Elastoplastic panel is explicitly unavailable: no shorter or substitute footage is used.</p>
+      <p class="en" lang="en">Both videos: 1920 × 1080, 480 frames at 60 fps, normal-speed playback. Existing clips are only scaled, labelled and tiled; no simulation rerun, time remapping or frame omission. Rigid uses the current component-based aggregate method.</p>
+      <figure id="breakable">
+        <video controls playsinline preload="metadata" poster="assets/bunny-drop-8s-breakable.jpg" aria-label="破断ありの8秒比較 / Breakable 8-second comparison" aria-describedby="breakable-caption">
+          <source src="assets/bunny-drop-8s-breakable.mp4" type="video/mp4">
+          <a href="assets/bunny-drop-8s-breakable.mp4">MP4を開く / Open MP4</a>
+        </video>
+        <figcaption id="breakable-caption">
+          <span>破断あり / Breakable — 左上: Elastic、右上: Elastoplastic（未完成）、左下: flow-Plastic、右下: Rigid</span>
+          <span class="en" lang="en">Top left: Elastic · Top right: Elastoplastic (not delivered) · Bottom left: flow-Plastic · Bottom right: Rigid.</span>
+          <a href="assets/bunny-drop-8s-breakable.mp4" download>ダウンロード / Download breakable MP4</a>
+        </figcaption>
+      </figure>
+      <figure id="unbreakable">
+        <video controls playsinline preload="metadata" poster="assets/bunny-drop-8s-unbreakable.jpg" aria-label="破断なしの8秒比較 / Unbreakable 8-second comparison" aria-describedby="unbreakable-caption">
+          <source src="assets/bunny-drop-8s-unbreakable.mp4" type="video/mp4">
+          <a href="assets/bunny-drop-8s-unbreakable.mp4">MP4を開く / Open MP4</a>
+        </video>
+        <figcaption id="unbreakable-caption">
+          <span>破断なし / Unbreakable — 同じ材料配置、8秒・通常速度</span>
+          <span class="en" lang="en">The same material layout with bond breaking disabled. Unbreakable does not mean rigid: deformable materials can still deform.</span>
+          <a href="assets/bunny-drop-8s-unbreakable.mp4" download>ダウンロード / Download unbreakable MP4</a>
+        </figcaption>
+      </figure>
+    </section>
+
     <section aria-label="研究デモ / Research demo">
       <div class="intro">
         <p>粒子法に基づく統一的な材料シミュレーションの研究デモです。異なる材料の振る舞いを、同一のシミュレータで表現します。</p>
