@@ -1,0 +1,235 @@
+{
+  "updated": "2026-10-02",
+  "films": [
+    {
+      "number": 1,
+      "id": "elastic-breakable",
+      "material": "elastic",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "",
+      "variant_ja": "",
+      "file": "assets/scenes/elastic-breakable.mp4",
+      "poster": "assets/scenes/elastic-breakable.jpg",
+      "sha256": "d8f1690f3928440b9141d47b8ca25bd53cd3d29ffddfe8204264fe7ce4cb7107",
+      "poster_sha256": "28a858d92fdb4d16f8c5d47729e43a7c35b55a7a527c815b0baa355b02ce3e38",
+      "bytes": 3709588,
+      "source": "artifact/bunny_drop_eight_scenes/elastic_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 2,
+      "id": "elastic-unbreakable",
+      "material": "elastic",
+      "label_en": "Unbreakable",
+      "label_ja": "破断なし",
+      "variant_en": "",
+      "variant_ja": "",
+      "file": "assets/scenes/elastic-unbreakable.mp4",
+      "poster": "assets/scenes/elastic-unbreakable.jpg",
+      "sha256": "8109642857babfd3820a38d38a832a37edb7fa56b0fd95423696fa31640d62bc",
+      "poster_sha256": "12566b41c51b7b09eb9ec454f0f37a658044b41b7bc9d3ad21c3050f103509a7",
+      "bytes": 1121207,
+      "source": "artifact/bunny_drop_eight_scenes/elastic_unbreakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 3,
+      "id": "rigid-breakable",
+      "material": "rigid",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "",
+      "variant_ja": "",
+      "file": "assets/scenes/rigid-breakable.mp4",
+      "poster": "assets/scenes/rigid-breakable.jpg",
+      "sha256": "1c4f7608068b8e6e7b6b44632991b8df9554c054e9c93c0113f3a7f636b704bd",
+      "poster_sha256": "b986554a282b6350ded22e1383929c99c023b13f93f82366737204f87458d2a8",
+      "bytes": 16818871,
+      "source": "artifact/rigid_aggregate_restore/r1/scenes/rigid_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 4,
+      "id": "rigid-unbreakable",
+      "material": "rigid",
+      "label_en": "Unbreakable",
+      "label_ja": "破断なし",
+      "variant_en": "",
+      "variant_ja": "",
+      "file": "assets/scenes/rigid-unbreakable.mp4",
+      "poster": "assets/scenes/rigid-unbreakable.jpg",
+      "sha256": "96da6e77b0d3dc87e074bd91f159a398f2de272146870bb184d37b9afc3561c4",
+      "poster_sha256": "89a37c08c6291908fc9ea5ed0c862d7293fe909053ac514d97774a192f5b9a9d",
+      "bytes": 2389555,
+      "source": "artifact/rigid_aggregate_restore/r1/scenes/rigid_unbreakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 5,
+      "id": "plastic-fast-breakable",
+      "material": "plastic",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "Flow rate λ = 5 s⁻¹",
+      "variant_ja": "流動速度 λ = 5 s⁻¹",
+      "file": "assets/scenes/plastic-fast-breakable.mp4",
+      "poster": "assets/scenes/plastic-fast-breakable.jpg",
+      "sha256": "e58522247ad74c10732e218c21918a104d0c930752026bca18942129327f9a40",
+      "poster_sha256": "79bf411988f61d901a308cdfa5f8103153fc4a23710193b62bd8a9247e7bbfca",
+      "bytes": 6656540,
+      "source": "artifact/bunny_drop_eight_scenes/plastic_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 6,
+      "id": "plastic-fast-unbreakable",
+      "material": "plastic",
+      "label_en": "Unbreakable",
+      "label_ja": "破断なし",
+      "variant_en": "Flow rate λ = 5 s⁻¹",
+      "variant_ja": "流動速度 λ = 5 s⁻¹",
+      "file": "assets/scenes/plastic-fast-unbreakable.mp4",
+      "poster": "assets/scenes/plastic-fast-unbreakable.jpg",
+      "sha256": "a1d2e8cbc5e40bd8c21dce22dc005824eb02f702fc12ede01f35b888c0583f75",
+      "poster_sha256": "bcdf646b64df8d55c690983f94c5d99f9a993a8c4a5b8ca9d2ae2a3f61488456",
+      "bytes": 820617,
+      "source": "artifact/bunny_drop_eight_scenes/plastic_unbreakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 7,
+      "id": "plastic-slow-breakable",
+      "material": "plastic",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "Flow rate λ = 0.5 s⁻¹",
+      "variant_ja": "流動速度 λ = 0.5 s⁻¹",
+      "file": "assets/scenes/plastic-slow-breakable.mp4",
+      "poster": "assets/scenes/plastic-slow-breakable.jpg",
+      "sha256": "3be8f069cabe5f3ccaea731a36d9a66901873dc6f3e07f92f4de2cec31005821",
+      "poster_sha256": "d151223d20f7f71b813666d39c29f21de0099342a4e5f3ecf57c54de1da6d0ad",
+      "bytes": 875183,
+      "source": "artifact/bunny_material_retune/r1/scenes/plastic_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 8,
+      "id": "ep-earlier-breakable",
+      "material": "elastoplastic",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "Earlier recipe · fracture-dominant",
+      "variant_ja": "従来配合・破断が主体",
+      "file": "assets/scenes/ep-earlier-breakable.mp4",
+      "poster": "assets/scenes/ep-earlier-breakable.jpg",
+      "sha256": "359de25b622428e2dd0e4c797f984b20d31bb30463bdb32e8129a19e083959cd",
+      "poster_sha256": "53c670c0d012cf1b2ff64ad6a3f50218e7c78b3a4174caf0245b2c58a96f2c77",
+      "bytes": 4583079,
+      "source": "artifact/elastoplastic_live_bond_delivery/r1/elastoplastic_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 9,
+      "id": "ep-earlier-unbreakable",
+      "material": "elastoplastic",
+      "label_en": "Unbreakable",
+      "label_ja": "破断なし",
+      "variant_en": "Earlier recipe · limited local yielding",
+      "variant_ja": "従来配合・局所的な降伏",
+      "file": "assets/scenes/ep-earlier-unbreakable.mp4",
+      "poster": "assets/scenes/ep-earlier-unbreakable.jpg",
+      "sha256": "d9c4561863da3b865836ff7f511793bae68698c3c5b042e1c0d57e1f8064585e",
+      "poster_sha256": "6e7789bc2ef9bb6e0dc550c5ebd483f1f49cb43088b0b6bc0952fd53ed8597b9",
+      "bytes": 1504748,
+      "source": "artifact/elastoplastic_live_bond_delivery/r1/elastoplastic_unbreakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    },
+    {
+      "number": 10,
+      "id": "ep-updated-breakable",
+      "material": "elastoplastic",
+      "label_en": "Breakable",
+      "label_ja": "破断あり",
+      "variant_en": "Updated recipe · widespread yielding",
+      "variant_ja": "新配合・広範な降伏",
+      "file": "assets/scenes/ep-updated-breakable.mp4",
+      "poster": "assets/scenes/ep-updated-breakable.jpg",
+      "sha256": "2504b6a93735db390e79bea21dc1f64600df8c71d83ffd5e9672d5a2b8d2a062",
+      "poster_sha256": "fd0b183a4c2b3682778e90d473df1320e9694fb9e2f620ba160a142032f7d295",
+      "bytes": 1014235,
+      "source": "artifact/formal_scenes/r1/runs/ep_breakable/elastoplastic_breakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
+    }
+  ],
+  "pending": [
+    {
+      "id": "ep-updated-unbreakable",
+      "material": "elastoplastic",
+      "status": "in_progress",
+      "file": null
+    }
+  ],
+  "media_processing": "MP4 bytes unchanged; posters extracted from existing films only.",
+  "archived": "Previous comparison/demo assets are retained, but are not shown on this page."
+}

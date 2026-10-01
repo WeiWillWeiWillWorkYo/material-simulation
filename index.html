@@ -3,103 +3,209 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Physical AIのための統一材料シミュレーション | Wei CUI</title>
-  <meta name="description" content="粒子法に基づく統一材料シミュレーションの研究デモ。剛体・弾性体・弾塑性体・塑性体を同一のシミュレータで扱う。Wei CUI, University of Tsukuba.">
+  <title>Material Behaviour Gallery · Physical AI | Wei CUI</title>
+  <meta name="description" content="10 material-simulation films: elastic, rigid, plastic flow and elastoplastic behaviour, with bond breaking enabled or disabled. Wei CUI, University of Tsukuba.">
   <link rel="canonical" href="https://weiwillweiwillworkyo.github.io/material-simulation/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Unified Material Simulation Framework for Physical AI">
-  <meta property="og:description" content="A particle-based research demo of rigid, elastic, elastoplastic and plastic materials. Wei CUI, University of Tsukuba.">
+  <meta property="og:title" content="Material Behaviour Gallery · Physical AI">
+  <meta property="og:description" content="Elastic, rigid, plastic flow and elastoplastic materials. Ten completed simulation films and one upcoming result.">
   <meta property="og:url" content="https://weiwillweiwillworkyo.github.io/material-simulation/">
-  <meta property="og:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/poster.png">
+  <meta property="og:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/scenes/plastic-slow-breakable.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Unified Material Simulation Framework for Physical AI">
-  <meta name="twitter:description" content="A particle-based material simulation research demo by Wei CUI, University of Tsukuba.">
-  <meta name="twitter:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/poster.png">
   <style>
-    :root { color-scheme:light; --ink:#1b2330; --sub:#5d6675; --line:#e3e7ee; --bg:#f7f8fa; --accent:#2456c4; }
-    * { box-sizing:border-box; }
-    body { margin:0; color:var(--ink); background:var(--bg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Hiragino Sans","Noto Sans JP",sans-serif; line-height:1.65; }
-    main { max-width:1080px; margin:0 auto; padding:48px 28px 28px; }
-    header { border-left:4px solid var(--accent); padding-left:20px; margin-bottom:26px; }
-    h1 { margin:0; font-size:clamp(1.5rem,3vw,2rem); line-height:1.45; font-weight:700; overflow-wrap:anywhere; }
-    .en-title { margin:8px 0 0; font-size:clamp(1rem,2vw,1.2rem); color:var(--sub); }
-    .author { margin:14px 0 0; font-size:.95rem; }
-    .intro { margin:0 0 24px; }
-    .intro p { margin:5px 0; }
-    .en { color:var(--sub); font-size:.94rem; }
-    figure { margin:0; }
-    video { display:block; width:100%; height:auto; aspect-ratio:128/81; background:#101b2d; border-radius:10px; }
-    figcaption { padding:15px 0 12px; font-size:.95rem; }
-    figcaption span { display:block; }
-    a { color:var(--accent); text-underline-offset:3px; }
-    a:focus-visible,video:focus-visible { outline:3px solid var(--accent); outline-offset:5px; }
-    .links { display:flex; flex-wrap:wrap; gap:12px 28px; padding-top:8px; font-size:.94rem; }
-    footer { margin-top:32px; padding-top:18px; border-top:1px solid var(--line); color:var(--sub); font-size:.85rem; }
-    @media(max-width:600px) { main { padding:28px 16px 24px; } header { padding-left:14px; } video { border-radius:6px; } }
-    .comparisons { margin:0 0 40px; padding-bottom:24px; border-bottom:1px solid var(--line); }
-    .comparisons h2 { margin:0 0 14px; font-size:1.4rem; }
-    .comparisons figure { margin-top:24px; }
-    .comparisons video { aspect-ratio:16/9; }
+    :root{color-scheme:light;--bg:#f5f6f8;--paper:#fff;--ink:#182333;--muted:#5c697b;--accent:#285bca;--line:#dfe5ed}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.6}
+    main{max-width:1180px;margin:auto;padding:48px 28px 28px}header{border-left:4px solid var(--accent);padding-left:24px;margin-bottom:28px}
+    .eyebrow{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 10px}
+    h1{font-size:clamp(1.6rem,3.3vw,2.45rem);line-height:1.25;margin:0;letter-spacing:-.035em}.subtitle{margin:10px 0;color:var(--muted);font-size:1rem}
+    .author{font-size:.9rem;margin:15px 0 0}.summary{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}.summary span{padding:4px 10px;border:1px solid var(--line);border-radius:99px;font-size:.77rem;background:var(--paper)}
+    nav{position:sticky;top:0;z-index:2;display:flex;gap:8px;flex-wrap:wrap;padding:12px 0;background:var(--bg);border-bottom:1px solid var(--line)}
+    a{color:var(--accent);text-underline-offset:3px}nav a{padding:6px 13px;text-decoration:none;font-size:.88rem;font-weight:600;border-radius:6px}nav a:hover{background:#e7edf8}
+    .intro{color:var(--muted);font-size:.9rem;margin:22px 0 0}.intro p{margin:6px 0}.material-section{padding-top:38px;margin-bottom:10px}
+    h2{font-size:1.55rem;letter-spacing:-.02em;margin:0}h2 span{font-size:.95rem;color:var(--muted);font-weight:400;margin-left:9px}
+    .section-note{color:var(--muted);font-size:.88rem;margin:7px 0;max-width:960px}.section-note.ja{font-size:.82rem}
+    .film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}.film{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    .card-heading{display:flex;align-items:flex-start;gap:12px;padding:18px 18px 10px}.number{font-size:.75rem;letter-spacing:.03em;background:#eef2f8;color:var(--muted);padding:4px 7px;border-radius:4px;flex-shrink:0}
+    h3{font-size:1rem;line-height:1.4;margin:0}.card-heading .ja{font-size:.78rem;color:var(--muted);margin:3px 0 0}.variant{font-size:.85rem;margin:0;padding:0 18px 13px;color:var(--muted)}
+    video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#10151d;margin-top:auto}video:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+    .film-footer{padding:11px 18px;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.75rem;color:var(--muted)}.film-footer a{font-weight:600;text-decoration:none}
+    .pending-screen{aspect-ratio:16/9;background:#10151d;color:#a4afbf;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-top:auto;font-size:.85rem}.pending-screen strong{color:#edf2fa;font-size:1.1rem;font-weight:500}.pending-dot{height:7px;width:7px;background:#8092ad;border-radius:50%;margin-bottom:5px}
+    footer{margin-top:42px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:680px){main{padding:28px 16px 22px}header{padding-left:15px}.film-grid{grid-template-columns:1fr;gap:16px}.material-section{padding-top:28px}nav{gap:2px}nav a{font-size:.78rem;padding:6px 9px}.card-heading{padding:15px 15px 10px}.film-footer{padding:10px 15px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
   <main>
     <header>
-      <h1>Physical AIのための<br>統一材料シミュレーションフレームワーク</h1>
-      <p class="en-title" lang="en">Unified Material Simulation Framework for Physical AI</p>
+      <p class="eyebrow" lang="en">Physical AI · Material Simulation</p>
+      <h1 lang="en">One framework. Different material behaviours.</h1>
+      <p class="subtitle">統一材料シミュレーションフレームワーク — 材料挙動ギャラリー</p>
       <p class="author">Wei CUI · 筑波大学 <span lang="en">/ University of Tsukuba</span></p>
+      <div class="summary" lang="en"><span>10 completed films</span><span>8 seconds each · 60 fps</span><span>1 upcoming EP result</span></div>
     </header>
-    <section class="comparisons" id="bunny-drop-8s" aria-labelledby="comparisons-title">
-      <h2 id="comparisons-title">4材料・8秒間の落下比較 / Four materials, 8-second bunny drop</h2>
-      <p>弾性体・弾塑性体・flow-Plastic・剛体の8秒映像がすべて揃いました。破断を許可する場合と禁止する場合を、別々の動画で比較できます。</p>
-      <p class="en" lang="en">All four panels now contain completed 8-second deliveries: Elastic, Elastoplastic, flow-Plastic and Rigid. Compare bond breaking enabled and disabled in the two videos below.</p>
-      <p class="en" lang="en">Both videos: 1920 × 1080, 480 frames at 60 fps, normal-speed playback. Delivered clips are only scaled, labelled and tiled; no simulation rerun, time remapping or frame omission. Rigid uses the component-based aggregate method.</p>
-      <p class="en" lang="en">Material colours and shaders are representative looks, not calibrated material measurements. These clips come from separate delivery rounds and are a visual comparison, not a performance benchmark.</p>
-      <figure id="breakable">
-        <video controls playsinline preload="metadata" poster="assets/bunny-drop-8s-breakable.jpg?v=6ea2c7153a31" aria-label="破断あり・4材料の8秒比較 / Breakable four-material 8-second comparison" aria-describedby="breakable-caption">
-          <source src="assets/bunny-drop-8s-breakable.mp4?v=6ea2c7153a31" type="video/mp4">
-          <a href="assets/bunny-drop-8s-breakable.mp4?v=6ea2c7153a31">MP4を開く / Open MP4</a>
-        </video>
-        <figcaption id="breakable-caption">
-          <span>破断あり / Breakable — 左上: Elastic、右上: Elastoplastic、左下: flow-Plastic、右下: Rigid</span>
-          <span class="en" lang="en">Top left: Elastic · Top right: Elastoplastic · Bottom left: flow-Plastic · Bottom right: Rigid.</span>
-          <a href="assets/bunny-drop-8s-breakable.mp4?v=6ea2c7153a31" download>ダウンロード / Download breakable MP4</a>
-        </figcaption>
-      </figure>
-      <figure id="unbreakable">
-        <video controls playsinline preload="metadata" poster="assets/bunny-drop-8s-unbreakable.jpg?v=016cb8363a5f" aria-label="破断なし・4材料の8秒比較 / Unbreakable four-material 8-second comparison" aria-describedby="unbreakable-caption">
-          <source src="assets/bunny-drop-8s-unbreakable.mp4?v=016cb8363a5f" type="video/mp4">
-          <a href="assets/bunny-drop-8s-unbreakable.mp4?v=016cb8363a5f">MP4を開く / Open MP4</a>
-        </video>
-        <figcaption id="unbreakable-caption">
-          <span>破断なし / Unbreakable — 同じ材料配置、8秒・通常速度</span>
-          <span class="en" lang="en">The same material layout with bond breaking disabled. Unbreakable does not mean rigid: deformable materials can still deform.</span>
-          <a href="assets/bunny-drop-8s-unbreakable.mp4?v=016cb8363a5f" download>ダウンロード / Download unbreakable MP4</a>
-        </figcaption>
-      </figure>
-    </section>
-
-    <section aria-label="研究デモ / Research demo">
-      <div class="intro">
-        <p>粒子法に基づく統一的な材料シミュレーションの研究デモです。異なる材料の振る舞いを、同一のシミュレータで表現します。</p>
-        <p class="en" lang="en">A particle-based research demo representing different material behaviors within a single simulator.</p>
-      </div>
-      <figure>
-        <video controls playsinline preload="metadata" poster="assets/poster.png" aria-label="四種の材料のシミュレーション / Four-material simulation" aria-describedby="video-caption">
-          <source src="assets/four-materials.mp4" type="video/mp4">
-          動画を再生できない場合は、<a href="assets/four-materials.mp4">MP4を開いてください</a>。
-        </video>
-        <figcaption id="video-caption">
-          <span>剛体（破断あり）・弾性体・弾塑性体・塑性体</span>
-          <span class="en" lang="en">Rigid material with fracture, elastic, elastoplastic and plastic materials.</span>
-        </figcaption>
-      </figure>
-      <div class="links">
-        <a href="assets/four-materials.mp4" download>動画をダウンロード / Download MP4</a>
-        <a href="https://github.com/WeiWillWeiWillWorkYo/material-simulation">GitHub</a>
-      </div>
-    </section>
-    <footer>Wei CUI · <span lang="ja">筑波大学</span> / <span lang="en">University of Tsukuba</span></footer>
+    <nav aria-label="材料 / Materials">
+      <a href="#elastic" lang="en">Elastic</a><a href="#rigid" lang="en">Rigid</a>
+      <a href="#plastic" lang="en">Plastic flow</a><a href="#elastoplastic" lang="en">Elastoplastic</a>
+    </nav>
+    <div class="intro">
+      <p>材料ごとの挙動と破断設定を、独立した映像で紹介します。動画はクリックでそのまま再生できます。</p>
+      <p lang="en">Explore material behaviour and fracture settings in individually playable films. “Unbreakable” disables bond breaking; it does not make a deformable material rigid.</p>
+      <p lang="en">Original simulation movies at normal playback speed. Recipes may differ between films; these are behaviour demonstrations, not a controlled benchmark. No video has been retimed or re-encoded for this gallery.</p>
+    </div>
+    <section class="material-section" id="elastic" aria-labelledby="elastic-title">
+          <div class="section-heading"><h2 id="elastic-title" lang="en">Elastic <span lang="ja">弾性体</span></h2></div>
+          <p class="section-note" lang="en">Elastic deformation with bond breaking enabled or disabled.</p><p class="section-note ja">弾性変形と、破断の有効・無効。</p>
+          <div class="film-grid"><article class="film" id="elastic-breakable">
+      <div class="card-heading"><span class="number">01</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり</p></div></div>
+      
+      <video controls playsinline preload="none" poster="assets/scenes/elastic-breakable.jpg?v=28a858d92fdb" aria-label="elastic · Breakable">
+        <source src="assets/scenes/elastic-breakable.mp4?v=d8f1690f3928" type="video/mp4">
+        <a href="assets/scenes/elastic-breakable.mp4?v=d8f1690f3928">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/elastic-breakable.mp4?v=d8f1690f3928" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="elastic-unbreakable">
+      <div class="card-heading"><span class="number">02</span>
+        <div><h3 lang="en">Unbreakable</h3>
+        <p class="ja">破断なし</p></div></div>
+      
+      <video controls playsinline preload="none" poster="assets/scenes/elastic-unbreakable.jpg?v=12566b41c51b" aria-label="elastic · Unbreakable">
+        <source src="assets/scenes/elastic-unbreakable.mp4?v=8109642857ba" type="video/mp4">
+        <a href="assets/scenes/elastic-unbreakable.mp4?v=8109642857ba">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/elastic-unbreakable.mp4?v=8109642857ba" download>MP4 ↓</a></div>
+    </article></div>
+        </section>
+<section class="material-section" id="rigid" aria-labelledby="rigid-title">
+          <div class="section-heading"><h2 id="rigid-title" lang="en">Rigid <span lang="ja">剛体</span></h2></div>
+          <p class="section-note" lang="en">Component-based rigid motion with bond breaking enabled or disabled.</p><p class="section-note ja">剛体成分の運動と、破断の有効・無効。</p>
+          <div class="film-grid"><article class="film" id="rigid-breakable">
+      <div class="card-heading"><span class="number">03</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり</p></div></div>
+      
+      <video controls playsinline preload="none" poster="assets/scenes/rigid-breakable.jpg?v=b986554a282b" aria-label="rigid · Breakable">
+        <source src="assets/scenes/rigid-breakable.mp4?v=1c4f7608068b" type="video/mp4">
+        <a href="assets/scenes/rigid-breakable.mp4?v=1c4f7608068b">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/rigid-breakable.mp4?v=1c4f7608068b" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="rigid-unbreakable">
+      <div class="card-heading"><span class="number">04</span>
+        <div><h3 lang="en">Unbreakable</h3>
+        <p class="ja">破断なし</p></div></div>
+      
+      <video controls playsinline preload="none" poster="assets/scenes/rigid-unbreakable.jpg?v=89a37c08c629" aria-label="rigid · Unbreakable">
+        <source src="assets/scenes/rigid-unbreakable.mp4?v=96da6e77b0d3" type="video/mp4">
+        <a href="assets/scenes/rigid-unbreakable.mp4?v=96da6e77b0d3">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/rigid-unbreakable.mp4?v=96da6e77b0d3" download>MP4 ↓</a></div>
+    </article></div>
+        </section>
+<section class="material-section" id="plastic" aria-labelledby="plastic-title">
+          <div class="section-heading"><h2 id="plastic-title" lang="en">Plastic flow <span lang="ja">塑性流動</span></h2></div>
+          <p class="section-note" lang="en">Two flow-rate recipes. Fracture capacities also differ between recipes; this is a behaviour gallery, not a one-parameter experiment.</p><p class="section-note ja">異なる流動速度の配合を展示します。配合間では破断容量も異なり、単一パラメータのみの比較ではありません。</p>
+          <div class="film-grid"><article class="film" id="plastic-fast-breakable">
+      <div class="card-heading"><span class="number">05</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり · 流動速度 λ = 5 s⁻¹</p></div></div>
+      <p class="variant" lang="en">Flow rate λ = 5 s⁻¹</p>
+      <video controls playsinline preload="none" poster="assets/scenes/plastic-fast-breakable.jpg?v=79bf411988f6" aria-label="plastic · Breakable · Flow rate λ = 5 s⁻¹">
+        <source src="assets/scenes/plastic-fast-breakable.mp4?v=e58522247ad7" type="video/mp4">
+        <a href="assets/scenes/plastic-fast-breakable.mp4?v=e58522247ad7">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/plastic-fast-breakable.mp4?v=e58522247ad7" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="plastic-fast-unbreakable">
+      <div class="card-heading"><span class="number">06</span>
+        <div><h3 lang="en">Unbreakable</h3>
+        <p class="ja">破断なし · 流動速度 λ = 5 s⁻¹</p></div></div>
+      <p class="variant" lang="en">Flow rate λ = 5 s⁻¹</p>
+      <video controls playsinline preload="none" poster="assets/scenes/plastic-fast-unbreakable.jpg?v=bcdf646b64df" aria-label="plastic · Unbreakable · Flow rate λ = 5 s⁻¹">
+        <source src="assets/scenes/plastic-fast-unbreakable.mp4?v=a1d2e8cbc5e4" type="video/mp4">
+        <a href="assets/scenes/plastic-fast-unbreakable.mp4?v=a1d2e8cbc5e4">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/plastic-fast-unbreakable.mp4?v=a1d2e8cbc5e4" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="plastic-slow-breakable">
+      <div class="card-heading"><span class="number">07</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり · 流動速度 λ = 0.5 s⁻¹</p></div></div>
+      <p class="variant" lang="en">Flow rate λ = 0.5 s⁻¹</p>
+      <video controls playsinline preload="none" poster="assets/scenes/plastic-slow-breakable.jpg?v=d151223d20f7" aria-label="plastic · Breakable · Flow rate λ = 0.5 s⁻¹">
+        <source src="assets/scenes/plastic-slow-breakable.mp4?v=3be8f069cabe" type="video/mp4">
+        <a href="assets/scenes/plastic-slow-breakable.mp4?v=3be8f069cabe">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/plastic-slow-breakable.mp4?v=3be8f069cabe" download>MP4 ↓</a></div>
+    </article></div>
+        </section>
+<section class="material-section" id="elastoplastic" aria-labelledby="elastoplastic-title">
+          <div class="section-heading"><h2 id="elastoplastic-title" lang="en">Elastoplastic <span lang="ja">弾塑性体</span></h2></div>
+          <p class="section-note" lang="en">Earlier and updated recipes. The earlier unbreakable film has limited local yielding; the earlier breakable film is fracture-dominant. The updated unbreakable film will be added when complete.</p><p class="section-note ja">従来配合と新配合を展示します。従来配合は局所的な降伏、または破断が主体です。新配合の破断なし映像は完成後に追加します。</p>
+          <div class="film-grid"><article class="film" id="ep-earlier-breakable">
+      <div class="card-heading"><span class="number">08</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり · 従来配合・破断が主体</p></div></div>
+      <p class="variant" lang="en">Earlier recipe · fracture-dominant</p>
+      <video controls playsinline preload="none" poster="assets/scenes/ep-earlier-breakable.jpg?v=53c670c0d012" aria-label="elastoplastic · Breakable · Earlier recipe · fracture-dominant">
+        <source src="assets/scenes/ep-earlier-breakable.mp4?v=359de25b6224" type="video/mp4">
+        <a href="assets/scenes/ep-earlier-breakable.mp4?v=359de25b6224">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/ep-earlier-breakable.mp4?v=359de25b6224" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="ep-earlier-unbreakable">
+      <div class="card-heading"><span class="number">09</span>
+        <div><h3 lang="en">Unbreakable</h3>
+        <p class="ja">破断なし · 従来配合・局所的な降伏</p></div></div>
+      <p class="variant" lang="en">Earlier recipe · limited local yielding</p>
+      <video controls playsinline preload="none" poster="assets/scenes/ep-earlier-unbreakable.jpg?v=6e7789bc2ef9" aria-label="elastoplastic · Unbreakable · Earlier recipe · limited local yielding">
+        <source src="assets/scenes/ep-earlier-unbreakable.mp4?v=d9c4561863da" type="video/mp4">
+        <a href="assets/scenes/ep-earlier-unbreakable.mp4?v=d9c4561863da">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/ep-earlier-unbreakable.mp4?v=d9c4561863da" download>MP4 ↓</a></div>
+    </article>
+<article class="film" id="ep-updated-breakable">
+      <div class="card-heading"><span class="number">10</span>
+        <div><h3 lang="en">Breakable</h3>
+        <p class="ja">破断あり · 新配合・広範な降伏</p></div></div>
+      <p class="variant" lang="en">Updated recipe · widespread yielding</p>
+      <video controls playsinline preload="none" poster="assets/scenes/ep-updated-breakable.jpg?v=fd0b183a4c2b" aria-label="elastoplastic · Breakable · Updated recipe · widespread yielding">
+        <source src="assets/scenes/ep-updated-breakable.mp4?v=2504b6a93735" type="video/mp4">
+        <a href="assets/scenes/ep-updated-breakable.mp4?v=2504b6a93735">Open MP4 / MP4を開く</a>
+      </video>
+      <div class="film-footer"><span lang="en">8 s · 60 fps · 1920 × 1080</span>
+        <a href="assets/scenes/ep-updated-breakable.mp4?v=2504b6a93735" download>MP4 ↓</a></div>
+    </article><article class="film pending" id="ep-updated-unbreakable">
+              <div class="card-heading"><span class="number">—</span><div>
+                <h3 lang="en">Unbreakable</h3><p class="ja">破断なし · 新配合</p></div></div>
+              <p class="variant" lang="en">Updated recipe</p>
+              <div class="pending-screen" role="status"><span class="pending-dot"></span>
+                <strong lang="en">In progress</strong><span>準備中 · 完成後に追加</span></div>
+              <div class="film-footer"><span lang="en">No completed film yet</span></div>
+            </article></div>
+        </section>
+    <footer><span>Wei CUI · University of Tsukuba · Updated 2026-10-02</span>
+      <span><a href="https://github.com/WeiWillWeiWillWorkYo/material-simulation">GitHub</a> · <a href="gallery.json">Media provenance</a></span></footer>
   </main>
+  <script>
+    // Keep a user-selected film playing alone, without autoplaying the gallery.
+    document.addEventListener('play', event => {
+      if (event.target.tagName !== 'VIDEO') return;
+      document.querySelectorAll('video').forEach(video => { if (video !== event.target) video.pause(); });
+    }, true);
+  </script>
 </body>
 </html>
