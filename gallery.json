@@ -220,18 +220,31 @@
         "duration": "8.000000",
         "nb_frames": "480"
       }
-    }
-  ],
-  "pending": [
+    },
     {
+      "number": 11,
       "id": "ep-updated-unbreakable",
       "material": "elastoplastic",
+      "label_en": "Unbreakable",
+      "label_ja": "破断なし",
       "variant_en": "Widespread yielding",
       "variant_ja": "広範な降伏",
-      "status": "in_progress",
-      "file": null
+      "file": "assets/scenes/ep-updated-unbreakable.mp4",
+      "poster": "assets/scenes/ep-updated-unbreakable.jpg",
+      "sha256": "45b0b9d99b23f1c966a7dafd5e481b398116ada3bad3b1b92a098237509a52d8",
+      "poster_sha256": "fed7f2b20458528f5f712c1ab7fa61405230d268be131e60dfbea3f90213074c",
+      "bytes": 981032,
+      "source": "artifact/formal_scenes/r1/runs/ep_unbreakable/elastoplastic_unbreakable/package/preview_60fps.mp4",
+      "probe": {
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "8.000000",
+        "nb_frames": "480"
+      }
     }
   ],
+  "pending": [],
   "media_processing": "MP4 bytes unchanged; posters extracted from existing films only.",
   "archived": "Previous comparison/demo assets are retained, but are not shown on this page."
 }
