@@ -18,6 +18,12 @@ References include SimOpt (ICRA 2019), NVIDIA Newton, NVIDIA Physical AI Data Fa
 
 An external architecture figure from the GNS paper is reproduced with attribution under CC BY 4.0. See [figure credits](assets/references/ATTRIBUTION.md). The other relationship diagrams are native HTML/CSS and reflow for mobile screens. No external scripts, fonts or hotlinked images are required.
 
+## Letter Teaser
+
+[Watch inline](https://weiwillweiwillworkyo.github.io/material-simulation/#letter-teaser) · [MP4](assets/teasers/letter-teaser.mp4)
+
+5 seconds · 300 frames · 60 FPS · 1920 × 1080. Original MP4 bytes preserved.
+
 ## Material-behaviour gallery
 
 Updated 2026-10-02: 11 completed films — 2 Elastic, 2 Rigid, 3 Plastic flow and 4 Elastoplastic.

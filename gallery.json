@@ -246,5 +246,25 @@
   ],
   "pending": [],
   "media_processing": "MP4 bytes unchanged; posters extracted from existing films only.",
-  "archived": "Previous comparison/demo assets are retained, but are not shown on this page."
+  "archived": "Previous comparison/demo assets are retained, but are not shown on this page.",
+  "teasers": [
+    {
+      "id": "letter-teaser",
+      "title": "Letter Teaser",
+      "file": "assets/teasers/letter-teaser.mp4",
+      "poster": "assets/teasers/letter-teaser.jpg",
+      "source": "artifact/teasers/act1_r4/delivery/字母Scene_NVIDIA_1080p60.mp4",
+      "sha256": "a8dee333212ebf79cbddd7457b0edf39523bb8871e9fa06255bd2a840dcfcc97",
+      "poster_sha256": "fef6947f061df35326f89e152d755675a44f5750c016e4778f0ce9f51be3c649",
+      "bytes": 1326947,
+      "probe": {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "avg_frame_rate": "60/1",
+        "duration": "5.000000",
+        "nb_frames": "300"
+      }
+    }
+  ]
 }
