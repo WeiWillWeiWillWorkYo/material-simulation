@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Material Behaviour Gallery · Physical AI | Wei CUI</title>
-  <meta name="description" content="11 material-simulation films: elastic, rigid, plastic flow and elastoplastic behaviour, with bond breaking enabled or disabled. Wei CUI, University of Tsukuba.">
+  <title>Unified Material Simulation · Physical AI Research &amp; Gallery | Wei CUI</title>
+  <meta name="description" content="統一材料シミュレーションから、実機RL・物理データファクトリー・GNNシミュレータへ。共同研究の3テーマ、関係図、参考文献と11本の材料挙動デモ。Wei CUI, University of Tsukuba.">
   <link rel="canonical" href="https://weiwillweiwillworkyo.github.io/material-simulation/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Material Behaviour Gallery · Physical AI">
-  <meta property="og:description" content="Elastic, rigid, plastic flow and elastoplastic materials. Eleven completed simulation films.">
+  <meta property="og:title" content="Unified Material Simulation for Physical AI · Wei CUI">
+  <meta property="og:description" content="Three research directions: Sim-to-Real-to-Sim RL, a physics-based data factory, and GNN simulators. With eleven material simulation films.">
   <meta property="og:url" content="https://weiwillweiwillworkyo.github.io/material-simulation/">
   <meta property="og:image" content="https://weiwillweiwillworkyo.github.io/material-simulation/assets/scenes/plastic-slow-breakable.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -34,20 +34,140 @@
     @media(max-width:680px){main{padding:28px 16px 22px}header{padding-left:15px}.film-grid{grid-template-columns:1fr;gap:16px}.material-section{padding-top:28px}nav{gap:2px}nav a{font-size:.78rem;padding:6px 9px}.card-heading{padding:15px 15px 10px}.film-footer{padding:10px 15px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
+  <link rel="stylesheet" href="research.css?v=20261002">
 </head>
 <body>
+  <a class="skip-link" href="#research">共同研究テーマへ移動</a>
   <main>
     <header>
       <p class="eyebrow" lang="en">Physical AI · Material Simulation</p>
       <h1 lang="en">One framework. Different material behaviours.</h1>
-      <p class="subtitle">統一材料シミュレーションフレームワーク — 材料挙動ギャラリー</p>
+      <p class="subtitle">統一材料シミュレーションフレームワーク — 研究デモと共同研究テーマ</p>
       <p class="author">Wei CUI · 筑波大学 <span lang="en">/ University of Tsukuba</span></p>
-      <div class="summary" lang="en"><span>11 completed films</span><span>8 seconds each · 60 fps</span></div>
+      <p class="research-lead"><strong>材料の違いを、学習の可能性へ。</strong><br>統一的な物理表現を起点に、物理データの生成、学習型シミュレーション、ロボット実機での学習をつなぐ。</p>
+      <p class="research-sub" lang="en">One physical representation. Three research directions: better robot learning, richer physics data, and generalizable learned simulators.</p>
+      <div class="summary" lang="en"><span>3 research directions</span><span>11 completed films</span><span>8 seconds each · 60 fps</span></div>
     </header>
-    <nav aria-label="材料 / Materials">
-      <a href="#elastic" lang="en">Elastic</a><a href="#rigid" lang="en">Rigid</a>
-      <a href="#plastic" lang="en">Plastic flow</a><a href="#elastoplastic" lang="en">Elastoplastic</a>
+    <nav class="site-nav" aria-label="ページ内ナビゲーション / Page navigation">
+      <a href="#research">全体像</a><a href="#sim-real">01 実機RL</a>
+      <a href="#data-factory">02 データ生成</a><a href="#gnn">03 GNN</a>
+      <a href="#gallery">動画ギャラリー</a><a href="#references">参考文献</a>
     </nav>
+
+    <section class="research-section" id="research" aria-labelledby="research-title">
+      <p class="section-kicker" lang="en">Research vision</p>
+      <h2 id="research-title">Physical AIから、シミュレーションを考え直す。</h2>
+      <p class="section-en" lang="en">A shared physical foundation for data, models and real-world learning.</p>
+      <p class="context">シミュレーションを、結果を計算する道具から、AIが経験を積み、実世界の情報で更新される学習基盤へ。NVIDIAのNewtonは、拡張可能な物理ソルバやシステム同定を、Isaac Lab・MuJoCo Playgroundなどのロボット学習環境へつなぐ方向を示しています。<a class="cite" href="#ref-newton" aria-label="参考文献2">[2]</a> 本研究ではその流れを、<strong>材料・接触・変形を共通の物理量で扱う表現</strong>から掘り下げます。</p>
+      <figure class="map" aria-labelledby="map-title" aria-describedby="map-caption">
+        <p class="map-label" id="map-title">研究キーワードの関係 / Research map</p>
+        <div class="map-inputs"><span>相互作用 / Interaction</span><span>連成 / Coupling</span><span>接触 / Contact</span></div>
+        <div class="connector">共通の物理量で記述</div>
+        <div class="core-node"><strong>統一物理表現 / Unified physical representation</strong><p>状態 State · 接続関係 Topology · グラフ Graph<br>位置・速度・材料特性と、粒子間の相互作用</p></div>
+        <div class="connector">構成則：材料の力と変形の関係を切り替える</div>
+        <div class="core-node solver-node"><strong>同一の物理シミュレーション基盤</strong><p>剛体 · 弾性体 · 弾塑性体 · 塑性体<br>物理モデル × FP64数値計算</p></div>
+        <div class="outcomes">
+          <a class="outcome" href="#sim-real"><span class="outcome-no">01 · LEARN IN THE REAL WORLD</span><strong>Sim-to-Real-to-Sim</strong><span>RL方策 → 実機 → 同定・校正<br>実機からシミュレーションへ戻る</span></a>
+          <a class="outcome" href="#data-factory"><span class="outcome-no">02 · GENERATE PHYSICS DATA</span><strong>物理データファクトリー</strong><span>材料・条件の組合せ → 物理軌道<br>学習に必要な経験を生成する</span></a>
+          <a class="outcome" href="#gnn"><span class="outcome-no">03 · LEARN THE SIMULATOR</span><strong>GNNシミュレータ</strong><span>粒子・相互作用 → グラフ学習<br>材料をまたぐ知識共有を目指す</span></a>
+        </div>
+        <div class="connection-notes"><span><b>02 → 03</b> 教師データを供給</span><span><b>03 → 01</b> 予測・学習の加速へ</span><span><b>01 → 02・03</b> 実機の誤差から更新</span></div>
+        <figcaption id="map-caption">3テーマをつなぐ研究構想。RLは物理シミュレータでの学習から始め、GNNは将来の高速化経路として位置づけます。統一するのはAPIだけでなく、状態と相互作用の表現です。</figcaption>
+      </figure>
+      <p class="proposal-status">以下は共同研究として検証したい3つのテーマです。現在の材料挙動デモは<a href="#gallery">動画ギャラリー</a>で紹介しています。</p>
+    </section>
+
+    <section class="research-section topic" id="sim-real" aria-labelledby="sim-real-title">
+      <div class="topic-heading"><span class="topic-index" aria-hidden="true">01</span><div><h2 id="sim-real-title">実機とともに育つ、ロボットの強化学習</h2><p class="section-en" lang="en">Sim-to-Real-to-Sim reinforcement learning</p></div></div>
+      <p class="topic-intro">仮想環境で学んだ動作を実機へ移すだけでなく、実機で見つかったずれをシミュレーションへ戻す。材料の硬さや摩擦、変形が変わる作業でも、<strong>方策と物理モデルを一緒に更新する学習ループ</strong>を目指します。</p>
+      <div class="hypothesis"><h3>研究の問い</h3><p>統一的な物理表現は、材料ごとにモデルを分ける方法に比べ、RLの学習・実機への移行・再校正を、より少ない実機試行でつなげられるか？</p></div>
+      <figure class="process" aria-labelledby="loop-label">
+        <p class="map-label" id="loop-label">方策と物理モデルを更新するループ</p>
+        <ol class="flow">
+          <li><small>SIMULATION + RL</small><strong>仮想環境で学習</strong><span>材料・接触条件を変えながら<br>行動方策を獲得</span></li>
+          <li><small>SIM → REAL</small><strong>ロボット実機で実行</strong><span>把持・押込みなど<br>接触を伴う作業</span></li>
+          <li><small>REAL → SIM</small><strong>計測から同定・校正</strong><span>軌道・力・変形を比較し<br>物性・接触パラメータを更新</span></li>
+          <li><small>UPDATED SIMULATION</small><strong>仮想環境を更新</strong><span>条件分布を見直し<br>方策を再学習</span></li>
+        </ol>
+        <div class="feedback">更新された物理モデルで、次のRL学習へ</div>
+        <figcaption class="diagram-caption">実機は評価先であると同時に、仮想環境を改善するための情報源になります。</figcaption>
+      </figure>
+      <div class="insight-grid">
+        <div class="insight"><h3>共同研究の入り口</h3><p>まずは硬さの異なる対象物を、同じハンドで把持・押込みするタスクから。シミュレーションの予測と実機の力・変形を対応づけ、材料条件を変えても学習の仕組みを共有できるかを調べます。</p></div>
+        <div class="insight"><h3>何が分かるか</h3><ul><li>実機でのタスク成功率と、適応に必要な試行数</li><li>校正前後の力・変形・軌道のずれ</li><li>未学習の材料条件への適応と、学習に要する計算量</li></ul></div>
+      </div>
+      <p class="precision-note">比較ではタスク・方策・データ量を揃え、可能な範囲で物理モデルの忠実度も合わせます。「統一表現の効果」と「より詳細な物理モデルの効果」を切り分けて検証します。</p>
+      <div class="compact-refs"><strong>核となる参考文献</strong><a href="#ref-simopt">[1] SimOpt · ICRA 2019</a><a href="#ref-newton">[2] NVIDIA Newton</a><br>SimOptの「実機経験で仮想環境を更新する」考え方を出発点に、材料・接触の統一表現が学習ループへもたらす効果を問います。</div>
+      <details class="english-summary"><summary lang="en">English summary</summary><p lang="en">Train a policy in simulation, deploy it on a robot, identify material and contact parameters from measured motion, forces and deformation, then update the simulator and retrain. The research question is whether a shared physical representation improves transfer and adaptation compared with material-specific models. A first study could use grasping or indentation across objects of different stiffness, measuring real-world success, adaptation trials and physical prediction error.</p></details>
+    </section>
+
+    <section class="research-section topic topic-data" id="data-factory" aria-labelledby="data-title">
+      <div class="topic-heading"><span class="topic-index" aria-hidden="true">02</span><div><h2 id="data-title">Physical AIのための物理データファクトリー</h2><p class="section-en" lang="en">A physics-based data factory for Physical AI</p></div></div>
+      <p class="topic-intro">実験だけでは集めにくい、多様な材料と接触条件の経験をつくる。<strong>統一表現と切り替え可能な構成則、FP64の物理計算</strong>を基盤に、材料・形状・荷重・境界条件を計画的に変え、AI学習へ渡せる物理データを生成します。</p>
+      <div class="hypothesis"><h3>研究の問い</h3><p>共通のデータ構造で材料と条件を横断したデータを生成することで、実験データが少ない領域でも、学習モデルの頑健性と適用範囲を広げられるか？</p></div>
+      <figure class="process" aria-labelledby="factory-label">
+        <p class="map-label" id="factory-label">条件を設計し、物理を計算し、学習へ渡す</p>
+        <ol class="flow">
+          <li><small>DESIGN</small><strong>生成条件を設計</strong><span>材料特性・構成則<br>形状・荷重・境界条件</span></li>
+          <li><small>SIMULATE</small><strong>物理ベースの計算</strong><span>統一インターフェース<br>FP64数値計算</span></li>
+          <li><small>VALIDATE + PACKAGE</small><strong>検証してデータ化</strong><span>実験との照合・収束確認<br>物理量と生成条件を保存</span></li>
+          <li><small>TRAIN + EVALUATE</small><strong>Physical AIの学習</strong><span>GNN・状態推定・方策評価<br>未経験の条件で検証</span></li>
+        </ol>
+        <div class="feedback">学習が苦手な条件を見つけ、次に生成するデータを選ぶ</div>
+        <figcaption class="diagram-caption">狙いは画像の見た目だけでなく、動き・力・変形の対応が分かる、物理的に意味のある教師データです。</figcaption>
+      </figure>
+      <div class="insight-grid">
+        <div class="insight"><h3>生成したいデータ</h3><p>粒子の状態系列に加え、接触力・変形・応力・履歴を表す内部状態などを、対象モデルで定義・取得できる範囲から整備します。構成則、物性値、時間刻み、境界条件も付け、データの意味と再現性を保ちます。</p></div>
+        <div class="insight"><h3>共同研究で確かめたい価値</h3><p>把持・押込みなどの実験で物理モデルを校正し、実データのみで学習した場合と、合成データを加えた場合を比較。未学習の物性値・形状での予測誤差や、必要な実験データ量の変化を調べます。</p></div>
+      </div>
+      <p class="precision-note"><strong>FP64から、高保真へ。</strong> 倍精度は丸め誤差を抑えるための数値的な基盤です。高保真性はそれだけでは決まらず、構成則の妥当性、空間・時間離散化、実験による校正と検証を組み合わせて確かめます。<a class="cite" href="#ref-fp64" aria-label="参考文献7">[7]</a></p>
+      <div class="compact-refs"><strong>核となる参考資料</strong><a href="#ref-data-factory">[3] NVIDIA Physical AI Data Factory</a><a href="#ref-replicator">[4] NVIDIA Replicator</a><br>データの生成・拡張・評価をつなぐ産業動向を踏まえ、本提案では材料の力学応答と内部状態を扱う、物理計算側のデータ源を研究します。</div>
+      <details class="english-summary"><summary lang="en">English summary</summary><p lang="en">Generate structured physical trajectories across materials, constitutive laws and boundary conditions using physics-based FP64 computation. Pair outputs with simulation metadata and experimental validation. Study whether these data improve downstream generalization or reduce real-data requirements. Double precision is a numerical foundation, not evidence of physical fidelity by itself. Target outputs include states, contact forces, deformation and model-specific internal variables where available.</p></details>
+    </section>
+
+    <section class="research-section topic topic-gnn" id="gnn" aria-labelledby="gnn-title">
+      <div class="topic-heading"><span class="topic-index" aria-hidden="true">03</span><div><h2 id="gnn-title">材料をまたいで学ぶ、GNNシミュレータ</h2><p class="section-en" lang="en">Learning transferable dynamics with graph neural networks</p></div></div>
+      <p class="topic-intro">粒子をノード、相互作用をエッジとして、物理の時間発展をグラフニューラルネットワーク（GNN）に学習させる。単なるシミュレータの高速な近似にとどまらず、<strong>統一物理表現が、異なる材料間での知識共有に役立つか</strong>を研究します。</p>
+      <div class="hypothesis"><h3>研究の問い</h3><p>材料特性・内部状態・接触関係を共通のグラフ表現に載せることで、未学習の物性値や相互作用条件へ、よりよく汎化できるか？</p></div>
+      <figure class="process" aria-labelledby="gnn-label">
+        <p class="map-label" id="gnn-label">物理軌道から、学習可能なグラフへ</p>
+        <ol class="flow">
+          <li><small>REFERENCE DATA</small><strong>物理シミュレーション</strong><span>多様な材料・条件から<br>教師となる状態系列を生成</span></li>
+          <li><small>STATE + TOPOLOGY</small><strong>グラフに変換</strong><span>ノード：粒子・物性・履歴<br>エッジ：接触・結合・近傍</span></li>
+          <li><small>MESSAGE PASSING</small><strong>GNNで相互作用を学習</strong><span>ノード間で情報を交換し<br>次の状態変化を予測</span></li>
+          <li><small>ROLLOUT + TRANSFER</small><strong>未知条件で予測</strong><span>長時間の安定性・汎化を評価<br>将来は計画やRLの加速へ</span></li>
+        </ol>
+        <figcaption class="diagram-caption">塑性など履歴に依存する挙動には必要な内部状態を、接触や破断には変化する接続関係を含める設計を検討します。</figcaption>
+      </figure>
+      <div class="insight-grid">
+        <div class="insight"><h3>最初に検証すること</h3><p>同じ構成則の中で、学習時に使わなかった物性値や初期条件を予測するところから開始。材料ごとの個別モデルと、物性・履歴を入力する共通モデルを比較し、その先に異なる構成則への展開を見据えます。</p></div>
+        <div class="insight"><h3>研究としての焦点</h3><ul><li>統一表現によるデータ効率と未知条件への汎化</li><li>長いロールアウトでの誤差蓄積・安定性</li><li>物理シミュレータに対する精度と速度の両立</li></ul></div>
+      </div>
+      <div class="compact-refs"><strong>核となる参考文献</strong><a href="#ref-gns">[5] GNS · ICML 2020</a><a href="#ref-meshgraphnets">[6] MeshGraphNets · ICLR 2021</a><br>粒子・メッシュ上のメッセージパッシングを先行研究とし、本提案では材料をまたぐ共有表現と、その汎化効果を検証します。</div>
+      <figure class="external-figure" aria-labelledby="external-figure-title">
+        <h3 id="external-figure-title">先行研究の概念図：GNSの構造</h3>
+        <a href="assets/references/gns-architecture.png" aria-label="GNSの構造図を原寸で開く">
+          <img src="assets/references/gns-architecture.png" width="2235" height="996" loading="lazy" alt="GNSの構造。粒子の状態をEncoderでグラフ化し、Processorがメッセージパッシングを繰り返し、Decoderで取り出した動力学情報を用いて次の状態へ更新する。">
+        </a>
+        <figcaption><p class="figure-explanation">粒子の状態をグラフに変換し、相互作用を学習し、次の状態を予測する流れです。本提案では、この入力表現に材料特性や必要な履歴を持たせ、知識を共有できる範囲を探ります。</p>
+          <span>外部の先行研究を説明する図であり、本フレームワークの実装・結果を示すものではありません。クリックで拡大できます。</span>
+          <span class="figure-credit" lang="en">Source: Alvaro Sanchez-Gonzalez, Jonathan Godwin, Tobias Pfaff, Rex Ying, Jure Leskovec &amp; Peter Battaglia. <a href="https://proceedings.mlr.press/v119/sanchez-gonzalez20a.html">Learning to Simulate Complex Physics with Graph Networks</a>, ICML 2020, PMLR 119, Figure 2 (p. 8460). © The authors. <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> under the <a href="https://proceedings.mlr.press/pmlr-license-agreement.html">PMLR publication agreement</a>. Figure region extracted from the PDF and rasterized; the surrounding text and original caption are omitted. Diagram content unchanged.</span>
+        </figcaption>
+      </figure>
+      <details class="english-summary"><summary lang="en">English summary</summary><p lang="en">Use particle states and interactions as graph nodes and edges, and learn dynamics from simulation trajectories. Test whether shared representations of material properties, history and changing contacts improve data efficiency and generalization over material-specific models. Begin with held-out parameters within a constitutive family, before attempting transfer between constitutive laws. Evaluate long-horizon stability and the accuracy–speed trade-off before using learned simulation for planning or RL.</p></details>
+    </section>
+
+    <section class="discussion" aria-labelledby="discussion-title">
+      <h2 id="discussion-title">一緒に取り組みたいこと</h2>
+      <p>材料の変形と接触が効いてくる、ひとつの実機タスクから始めたいと考えています。対象物・ロボット・計測環境と、この統一材料シミュレーションを組み合わせ、<strong>「統一して表すこと」が、学習と実世界への適応をどこまで変えられるか</strong>を検証する共同研究を目指します。</p>
+    </section>
+
+    <div class="gallery-heading" id="gallery">
+      <p class="section-kicker" lang="en">Current simulation demos</p>
+      <h2>材料挙動ギャラリー</h2>
+      <p class="section-en" lang="en">One framework. Eleven material-behaviour films.</p>
+      <div class="gallery-links" aria-label="材料の種類"><a href="#elastic" lang="en">Elastic / 弾性体</a><a href="#rigid" lang="en">Rigid / 剛体</a><a href="#plastic" lang="en">Plastic flow / 塑性流動</a><a href="#elastoplastic" lang="en">Elastoplastic / 弾塑性体</a></div>
+    </div>
     <div class="intro">
       <p>材料ごとの挙動と破断設定を、独立した映像で紹介します。動画はクリックでそのまま再生できます。</p>
       <p lang="en">Explore material behaviour and fracture settings in individually playable films. “Unbreakable” disables bond breaking; it does not make a deformable material rigid.</p>
@@ -201,6 +321,21 @@
         <a href="assets/scenes/ep-updated-unbreakable.mp4?v=45b0b9d99b23" download>MP4 ↓</a></div>
     </article></div>
         </section>
+    <section class="references" id="references" aria-labelledby="references-title">
+      <p class="section-kicker" lang="en">Core references</p>
+      <h2 id="references-title">参考文献と、この提案とのつながり</h2>
+      <p class="section-note">各資料は研究の背景・設計上の着想を示します。本提案の性能や、既存製品との接続が実証済みであることを意味するものではありません。</p>
+      <ol class="reference-list">
+        <li id="ref-simopt"><cite lang="en"><a href="https://arxiv.org/abs/1810.05687">Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience</a></cite><span class="ref-meta" lang="en">Yevgen Chebotar et al. · ICRA 2019 · <a href="https://sites.google.com/view/simopt">Author project page</a></span><p>テーマ01：実機で得た経験を使ってシミュレーションのパラメータ分布を更新し、方策学習を繰り返す先行研究。実機から仮想環境へ戻るループの出発点です。</p></li>
+        <li id="ref-newton"><cite lang="en"><a href="https://developer.nvidia.com/newton-physics">Newton Physics Engine</a></cite><span class="ref-meta" lang="en">NVIDIA · Official developer overview</span><p>テーマ01・全体像：拡張可能なソルバ、システム同定、Isaac LabやMuJoCo Playgroundとの関係を示す公式資料。物理シミュレーションとロボット学習をつなぐ産業側の取り組みです。</p></li>
+        <li id="ref-data-factory"><cite lang="en"><a href="https://nvidianews.nvidia.com/news/nvidia-announces-open-physical-ai-data-factory-blueprint-to-accelerate-robotics-vision-ai-agents-and-autonomous-vehicle-development">NVIDIA Physical AI Data Factory Blueprint</a></cite><span class="ref-meta" lang="en">NVIDIA · Official announcement · 16 March 2026</span><p>テーマ02：データの生成・拡張・評価を一連の工程にする構想。本提案は、この流れを材料の力学応答を生成する物理ベースのデータ源へ展開するものです。</p></li>
+        <li id="ref-replicator"><cite lang="en"><a href="https://docs.omniverse.nvidia.com/extensions/latest/ext_replicator.html">Omniverse Replicator</a></cite><span class="ref-meta" lang="en">NVIDIA · Official documentation</span><p>テーマ02：合成データの生成、アノテーション、出力を組み合わせる基盤。認識向けデータ生成との接点を示しつつ、本提案は物理状態・力・変形の教師信号に焦点を置きます。</p></li>
+        <li id="ref-gns"><cite lang="en"><a href="https://proceedings.mlr.press/v119/sanchez-gonzalez20a.html">Learning to Simulate Complex Physics with Graph Networks</a></cite><span class="ref-meta" lang="en">Alvaro Sanchez-Gonzalez et al. · ICML 2020 · PMLR 119:8459–8468</span><p>テーマ03：粒子をノードとするグラフ上で相互作用を学習するGNS。初期条件・粒子数・予測時間への汎化を示した研究であり、本提案の材料・構成則をまたぐ汎化は別途検証する問いです。上の外部概念図の出典。</p></li>
+        <li id="ref-meshgraphnets"><cite lang="en"><a href="https://arxiv.org/abs/2010.03409">Learning Mesh-Based Simulation with Graph Networks</a></cite><span class="ref-meta" lang="en">Tobias Pfaff, Meire Fortunato, Alvaro Sanchez-Gonzalez &amp; Peter W. Battaglia · ICLR 2021</span><p>テーマ03：メッシュ上の情報伝播を通じて物理の時間発展を学ぶMeshGraphNets。グラフによる空間表現、解像度と汎化、計算効率の研究を考える基礎です。</p></li>
+        <li id="ref-fp64"><cite lang="en"><a href="https://docs.nvidia.com/cuda/floating-point/index.html">Floating Point and IEEE 754 Compliance for NVIDIA GPUs</a></cite><span class="ref-meta" lang="en">NVIDIA · CUDA technical documentation</span><p>テーマ02の技術補足：浮動小数点の表現、単精度・倍精度、丸めと演算順序の影響。数値精度と、実験で検証する物理的な忠実度を区別するための資料です。</p></li>
+      </ol>
+      <p class="section-note">文献確認日：2026-10-02。研究キーワードの関係図は本提案のために作成。外部画像の出典・利用条件は図の下と<a href="assets/references/ATTRIBUTION.md">画像クレジット</a>に記載しています。</p>
+    </section>
     <footer><span>Wei CUI · University of Tsukuba · Updated 2026-10-02</span>
       <span><a href="https://github.com/WeiWillWeiWillWorkYo/material-simulation">GitHub</a> · <a href="gallery.json">Media provenance</a></span></footer>
   </main>

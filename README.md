@@ -4,6 +4,22 @@ Wei CUI · University of Tsukuba
 
 [Watch the gallery](https://weiwillweiwillworkyo.github.io/material-simulation/)
 
+## Research directions
+
+The public page also introduces three proposed collaboration themes, with Japanese explanations, expandable English summaries, responsive keyword relationship diagrams and annotated primary references:
+
+1. [Sim-to-Real-to-Sim reinforcement learning](https://weiwillweiwillworkyo.github.io/material-simulation/#sim-real): update robot policies and physical models using real-world feedback.
+2. [A physics-based data factory](https://weiwillweiwillworkyo.github.io/material-simulation/#data-factory): generate validated, structured physical trajectories across materials and conditions.
+3. [GNN simulators](https://weiwillweiwillworkyo.github.io/material-simulation/#gnn): investigate whether unified state and interaction representations help learned dynamics generalize.
+
+These are research proposals, separate from the demonstrated material-behaviour films. FP64 is a numerical foundation, not a guarantee of physical fidelity. No real-robot transfer results, GNN benchmarks or product integrations are claimed.
+
+References include SimOpt (ICRA 2019), NVIDIA Newton, NVIDIA Physical AI Data Factory / Replicator, GNS (ICML 2020), MeshGraphNets (ICLR 2021), and NVIDIA's floating-point documentation. Each reference's role is explained [on the page](https://weiwillweiwillworkyo.github.io/material-simulation/#references).
+
+An external architecture figure from the GNS paper is reproduced with attribution under CC BY 4.0. See [figure credits](assets/references/ATTRIBUTION.md). The other relationship diagrams are native HTML/CSS and reflow for mobile screens. No external scripts, fonts or hotlinked images are required.
+
+## Material-behaviour gallery
+
 Updated 2026-10-02: 11 completed films — 2 Elastic, 2 Rigid, 3 Plastic flow and 4 Elastoplastic.
 Each completed film is an original 8-second, 1920 × 1080, 480-frame MP4 at 60 FPS, playable inline.
 
